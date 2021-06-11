@@ -1,0 +1,29 @@
+{
+  "name": "ewy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eLBirador/electron-ewy.git"
+  },
+  "keywords": [
+    "electron",
+    "ewy",
+    "pop",
+    "quiz"
+  ],
+  "author": "Gerald Villacarlos <gerald@yahaay.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eLBirador/electron-ewy/issues"
+  },
+  "homepage": "https://github.com/eLBirador/electron-ewy#readme",
+  "devDependencies": {
+    "electron": "^13.1.2"
+  }
+}
