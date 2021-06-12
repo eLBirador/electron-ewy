@@ -5,3 +5,15 @@ body {
     padding: 2rem;
   }
   
+
+div#question {
+  font-size: 40px;
+  color: orange;
+  font-weight: bold;
+}
+
+div#status {
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}
