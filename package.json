@@ -1,15 +1,21 @@
 {
   "name": "ewy",
+  "productName": "my-electron-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "dev": "electron . --debug",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eLBirador/electron-ewy.git"
+    "url": "https://github.com/eLBirador/electron-ewy"
   },
   "keywords": [
     "electron",
@@ -17,13 +23,51 @@
     "pop",
     "quiz"
   ],
-  "author": "Gerald Villacarlos <gerald@yahaay.com>",
+  "author": {
+    "name": "Gerald Villacarlos",
+    "email": "gerald@yahaay.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/eLBirador/electron-ewy/issues"
   },
   "homepage": "https://github.com/eLBirador/electron-ewy#readme",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "ewy"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
   "devDependencies": {
-    "electron": "^13.1.2"
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "electron": "13.1.2"
   }
 }
