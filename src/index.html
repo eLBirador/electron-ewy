@@ -11,7 +11,15 @@
     <input id="answer" name="answer" />
     <button id="submit" name="submit">Let's Check!</button>
     <div id="status"><div>
-          
-    <script></script>
+    <script>
+      const electron = require('electron');
+      const ipcRenderer = electron.ipcRenderer;
+
+      ipcRenderer.send('start', 1);
+
+      ipcRenderer.on('foo',(event,data) => {
+        console.log(data);
+      });
+    </script>          
   </body>
 </html>
