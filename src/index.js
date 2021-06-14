@@ -24,9 +24,9 @@ const createWindow = () => {
     center: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
+      // nodeIntegration: true,
       contextIsolation: false,
-      enableRemoteModule: true
+      // enableRemoteModule: true
     },
     frame: false,
     fullscreen: true,
@@ -35,7 +35,7 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  // mainWindow.setAlwaysOnTop(true, 'screen');
+  mainWindow.setAlwaysOnTop(true, 'screen');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
@@ -54,18 +54,31 @@ const createWindow = () => {
   //   return false;
   // })
 
-  let pair =  {
+  let world =  {
     success: true,
     message: "100"
   };
 
-  mainWindow.webContents.send('foo', world);
-
+  // mainWindow.webContents.send('foo', world);
+  
   ipcMain.on('start', (event,arg) => {
     //console.log(arg);
-    mainWindow.webContents.send('foo', world);
+    // mainWindow.webContents.send('foo', world);
   });
   
+  ipcMain.on('hide', (event,arg) => {
+    //console.log(arg);
+    mainWindow.hide();
+
+    setTimeout(function() { 
+      mainWindow.reload(); 
+      mainWindow.show();
+    }, 
+      900000
+    );
+
+  });
+
 };
 
 // This method will be called when Electron has finished
@@ -99,6 +112,7 @@ app.whenReady().then(() => {
 
   contextMenu = Menu.buildFromTemplate([
     { label: 'Show App', click:  function(){
+        mainWindow.reload();
         mainWindow.show();
     } },
     { label: 'Hide App', click:  function(){
@@ -110,6 +124,6 @@ app.whenReady().then(() => {
     } }
   ]);
 
-  tray.setToolTip('This is my application.')
+  tray.setToolTip('Ewy app.')
   tray.setContextMenu(contextMenu)
 })

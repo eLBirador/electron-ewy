@@ -6,25 +6,14 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>💖 Answer me!</h1>
-    <div id="question">This is Sparta!</div>
-    <input id="answer" name="answer" />
-    <button id="submit" name="submit">Let's Check!</button>
-    <div id="status"><div>
+    <h1>💖 Let's take an Ewy!</h1>
+    <div id="question"></div>
 
-    <button id="close-btn">Close this window</button>
-    <script>
-      const button = document.querySelector('#close-btn')
-      button.addEventListener('click', () => window.hide())
+    <div id="group1">
+      <input id="answer" name="answer" />
+      <button id="submit" name="submit">Let's Check!</button>
+      <div id="status"><div>  
+    </div>
 
-      const electron = require('electron');
-      const ipcRenderer = electron.ipcRenderer;
-
-      ipcRenderer.send('start', 1);
-
-      ipcRenderer.on('foo',(event,data) => {
-        console.log(data);
-      });
-    </script>          
   </body>
 </html>
