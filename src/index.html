@@ -11,7 +11,12 @@
     <input id="answer" name="answer" />
     <button id="submit" name="submit">Let's Check!</button>
     <div id="status"><div>
-          
-    <script></script>
+
+    <button id="close-btn">Close this window</button>
+    <script>
+      const button = document.querySelector('#close-btn')
+      button.addEventListener('click', () => window.hide())
+    </script>
+      
   </body>
 </html>
