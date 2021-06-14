@@ -16,7 +16,15 @@
     <script>
       const button = document.querySelector('#close-btn')
       button.addEventListener('click', () => window.hide())
-    </script>
-      
+
+      const electron = require('electron');
+      const ipcRenderer = electron.ipcRenderer;
+
+      ipcRenderer.send('start', 1);
+
+      ipcRenderer.on('foo',(event,data) => {
+        console.log(data);
+      });
+    </script>          
   </body>
 </html>

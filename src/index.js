@@ -1,4 +1,11 @@
-const { app, Menu, Tray, BrowserWindow, nativeImage } = require('electron');
+const { 
+  app, 
+  Menu,
+  Tray,
+  BrowserWindow,
+  nativeImage, 
+  ipcMain 
+} = require('electron');
 const path = require('path');
 
 let tray
@@ -17,7 +24,9 @@ const createWindow = () => {
     center: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true
     },
     frame: false,
     fullscreen: true,
@@ -45,6 +54,18 @@ const createWindow = () => {
   //   return false;
   // })
 
+  let pair =  {
+    success: true,
+    message: "100"
+  };
+
+  mainWindow.webContents.send('foo', world);
+
+  ipcMain.on('start', (event,arg) => {
+    //console.log(arg);
+    mainWindow.webContents.send('foo', world);
+  });
+  
 };
 
 // This method will be called when Electron has finished
